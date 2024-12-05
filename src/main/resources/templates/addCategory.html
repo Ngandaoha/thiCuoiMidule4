@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm loại sản phẩm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Thêm loại sản phẩm</h2>
+    <form action="/categories/add" method="post" onsubmit="return validateForm()">
+        <div class="mb-3">
+            <label for="name" class="form-label">Tên loại sản phẩm</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Thêm loại</button>
+        <a href="/" class="btn btn-secondary">Quay lại</a>
+    </form>
+
+    <!-- Bảng hiển thị các loại sản phẩm hiện có -->
+    <h3 class="mt-4">Danh sách loại sản phẩm</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên loại</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category, iterStat : ${categories}">
+            <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${category.name}"></td>
+            <td>
+                <form th:action="@{'/categories/delete/' + ${category.id}}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger btn-sm" 
+                            onclick="return confirm('Bạn có chắc chắn muốn xóa loại sản phẩm này?')">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById('name').value;
+        if (name.trim() === "") {
+            alert("Vui lòng nhập tên loại sản phẩm");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html> 
