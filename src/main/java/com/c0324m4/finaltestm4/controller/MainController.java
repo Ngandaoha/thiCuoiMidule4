@@ -96,39 +96,6 @@ public class MainController {
         model.addAttribute("categories", categoryService.getAllCategories());
         return "home";
     }
-
-//    @GetMapping("/products/edit/{id}")
-//    public String editProduct(@PathVariable Long id, Model model) {
-//        Product product = productService.findById(id);
-//        List<Category> categories = categoryService.getAllCategories();
-//        model.addAttribute("product", product);
-//        model.addAttribute("categories", categories);
-//        return "editProduct";
-//    }
-//
-//    @PostMapping("/products/update")
-//    public String updateProduct(@ModelAttribute Product product) {
-//        productService.updateProduct(product);
-//        return "redirect:/";
-//    }
-
-//    @GetMapping("/categories/add")
-//    public String showAddCategoryForm(Model model) {
-//        model.addAttribute("categories", categoryService.getAllCategories());
-//        return "addCategory";
-//    }
-//
-//    @PostMapping("/categories/add")
-//    public String addCategory(@ModelAttribute Category category) {
-//        categoryService.saveCategory(category);
-//        return "redirect:/categories/add";
-//    }
-//
-//    @PostMapping("/categories/delete/{id}")
-//    public String deleteCategory(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-//        categoryService.deleteCategory(id);
-//        redirectAttributes.addFlashAttribute("success", "Xóa loại sản phẩm thành công");
-//        return "redirect:/categories/add";
-//    }
+    
 
 }
